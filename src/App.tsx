@@ -8,10 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import TodoItem from "./components/TodoItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTodos, saveTodos } from "./utils/features";
 
 const App = () => {
-  const [todos, setTodos] = useState<TodoItemType[]>([]);
+  const [todos, setTodos] = useState<TodoItemType[]>(getTodos());
 
   const [title, setTitle] = useState<TodoItemType["title"]>("");
 
@@ -50,6 +51,9 @@ const App = () => {
     setTodos((prev) => [...prev, newTodo]);
     setTitle("");
   };
+  useEffect(() => {
+    saveTodos(todos);
+  }, [todos]);
 
   return (
     <div>
