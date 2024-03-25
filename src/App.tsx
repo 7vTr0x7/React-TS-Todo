@@ -24,7 +24,10 @@ const App = () => {
     setTodos(newTodos);
   };
 
-  const deleteHandler = (id: TodoItemType["id"]): void => {};
+  const deleteHandler = (id: TodoItemType["id"]): void => {
+    const newTodos: TodoItemType[] = todos.filter((item) => item.id !== id);
+    setTodos(newTodos);
+  };
   const submitHandler = (): void => {
     const newTodo: TodoItemType = {
       title,
