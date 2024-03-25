@@ -16,7 +16,12 @@ const App = () => {
   const [title, setTitle] = useState<TodoItemType["title"]>("");
 
   const completeHandler = (id: TodoItemType["id"]): void => {
-    alert(id);
+    const newTodos: TodoItemType[] = todos.map((item) => {
+      if (item.id === id) item.isCompleted = !item.isCompleted;
+      return item;
+    });
+
+    setTodos(newTodos);
   };
 
   const deleteHandler = (id: TodoItemType["id"]): void => {};
