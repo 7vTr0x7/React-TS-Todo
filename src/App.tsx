@@ -16,6 +16,10 @@ const App = () => {
     { id: "2", title: "Todo 2", isCompleted: true },
   ]);
 
+  const completeHandler = (id: TodoItemType["id"]) => {};
+
+  const deleteHandler = (id: TodoItemType["id"]) => {};
+
   return (
     <div>
       <Container maxWidth="sm" sx={{ height: "85vh" }}>
@@ -27,7 +31,12 @@ const App = () => {
 
         <Stack height={"80%"} direction={"column"} spacing={"1rem"} p={"1rem"}>
           {todos.map((item) => (
-            <TodoItem key={item.id} todo={item} />
+            <TodoItem
+              key={item.id}
+              todo={item}
+              completeHandler={completeHandler}
+              deleteHandler={deleteHandler}
+            />
           ))}
         </Stack>
         <TextField fullWidth label={"New Task"} />

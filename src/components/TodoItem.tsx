@@ -4,17 +4,25 @@ import { Delete } from "@mui/icons-material";
 
 type PropType = {
   todo: TodoItemType;
+  completeHandler: (id: TodoItemType["id"]) => void;
+  deleteHandler: (id: TodoItemType["id"]) => void;
 };
 
-const TodoItem = ({ todo }: PropType) => {
+const TodoItem = ({ todo, completeHandler, deleteHandler }: PropType) => {
   return (
     <div>
       <Paper sx={{ padding: "1rem" }}>
         <Stack direction={"row"} alignItems={"center"}>
           <Typography marginRight={"auto"}>{todo.title}</Typography>
           <Checkbox />
-          <Button sx={{ color: "Black" }}>Edit</Button>
-          <Button sx={{ color: "Black" }}>
+          <Button
+            sx={{ color: "Black" }}
+            onClick={() => completeHandler(todo.id)}>
+            Edit
+          </Button>
+          <Button
+            sx={{ color: "Black" }}
+            onClick={() => deleteHandler(todo.id)}>
             <Delete />
           </Button>
         </Stack>
