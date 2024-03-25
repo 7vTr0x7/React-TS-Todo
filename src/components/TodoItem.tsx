@@ -14,12 +14,8 @@ const TodoItem = ({ todo, completeHandler, deleteHandler }: PropType) => {
       <Paper sx={{ padding: "1rem" }}>
         <Stack direction={"row"} alignItems={"center"}>
           <Typography marginRight={"auto"}>{todo.title}</Typography>
-          <Checkbox />
-          <Button
-            sx={{ color: "Black" }}
-            onClick={() => completeHandler(todo.id)}>
-            Edit
-          </Button>
+          <Checkbox onChange={() => completeHandler(todo.id)} />
+          <Button sx={{ color: "Black" }}>Edit</Button>
           <Button
             sx={{ color: "Black" }}
             onClick={() => deleteHandler(todo.id)}>
