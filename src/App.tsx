@@ -28,6 +28,18 @@ const App = () => {
     const newTodos: TodoItemType[] = todos.filter((item) => item.id !== id);
     setTodos(newTodos);
   };
+
+  const editHandler = (
+    id: TodoItemType["id"],
+    title: TodoItemType["title"]
+  ): void => {
+    const newTodos: TodoItemType[] = todos.map((item) => {
+      if (item.id === id) item.title = title;
+      return item;
+    });
+
+    setTodos(newTodos);
+  };
   const submitHandler = (): void => {
     const newTodo: TodoItemType = {
       title,
@@ -55,6 +67,7 @@ const App = () => {
               todo={item}
               completeHandler={completeHandler}
               deleteHandler={deleteHandler}
+              editHandler={editHandler}
             />
           ))}
         </Stack>
